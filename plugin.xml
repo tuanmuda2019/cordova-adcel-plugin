@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    id="cordova-adcel-plugin"
+    version="2.2.6">
+
+	<name>cordova-adcel-plugin</name>
+    <description>AdCel plugin. This plugin allows you to show ads in your app.</description>
+    <license>Copyright</license>
+    <keywords>cordova,adcel,ads,mobile</keywords>
+    <repo></repo>
+    <issue></issue>
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
+    <js-module src="www/AdCelPlugin.js" name="AdCelPlugin">
+    	<clobbers target="plugins.AdCelPlugin" />
+    </js-module>
+    <js-module src="www/AdCelPluginIOS.js" name="AdCelPluginIOS"></js-module>
+    <js-module src="www/AdCelPluginAndroid.js" name="AdCelPluginAndroid"></js-module>
+    <js-module src="www/AdCelCallback.js" name="AdCelCallback"></js-module>
+    <js-module src="www/AdCelBannerPosition.js" name="AdCelBannerPosition"></js-module>
+    <js-module src="www/AdCelBannerSize.js" name="AdCelBannerSize"></js-module>
+    <js-module src="www/AdCelContentType.js" name="AdCelContentType"></js-module>
+    <js-module src="www/AdCelTargeting.js" name="AdCelTargeting"></js-module>
+    
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="AdCelPlugin" >
+                <param name="android-package" value="co.adcel.adcelcordovawrapper.AdCelPlugin"/>
+            </feature>
+        </config-file>
+        <edit-config file="AndroidManifest.xml" target="/manifest" mode="merge">
+            <manifest xmlns:tools="http://schemas.android.com/tools" />
+        </edit-config>
+        <config-file parent="/manifest/application" target="AndroidManifest.xml">
+            <meta-data
+                android:name="adcel.sdk.plugin"
+                android:value="phonegap"
+                tools:replace="android:value"/>
+        </config-file>
+       
+	<framework src="src/android/plugin.gradle" custom="true" type="gradleReference"/>
+    <source-file src="src/android/AdCelPlugin.java" target-dir="src/co/adcel/adcelcordovawrapper/AdCelPlugin.java" />
+	<resource-file src="src/android/strings.xml" target="res/values/strings_adcel.xml" /> <!-- external resources -->
+    </platform>
+    <!-- ios -->
+    <platform name="ios">
+        <!-- Cordova < 2.3 -->
+        <plugins-plist key="AdCelPlugin" string="AdCelPlugin" /> <!-- IOS_GENERATED -->
+
+        <config-file target="config.xml" parent="/*"> <!-- IOS_GENERATED -->
+        <feature name="AdCelPlugin"> <!-- IOS_GENERATED -->
+        <param name="ios-package" value="AdCelPlugin" /> <!-- IOS_GENERATED -->
+        <param name="onload" value="true" /> <!-- IOS_GENERATED -->
+        </feature> <!-- IOS_GENERATED -->
+        </config-file> <!-- IOS_GENERATED -->
+
+        <config-file target="*-Info.plist" parent="NSCalendarsUsageDescription"> <!-- IOS_GENERATED -->
+        <string>Adding events</string> <!-- IOS_GENERATED -->
+        </config-file> <!-- IOS_GENERATED -->
+
+
+        <config-file target="*-Info.plist" parent="NSAppTransportSecurity"> <!-- IOS_GENERATED -->
+        <dict> <!-- IOS_GENERATED -->
+        <key>NSAllowsArbitraryLoads</key> <!-- IOS_GENERATED -->
+        <true/> <!-- IOS_GENERATED -->
+        <key>NSAllowsArbitraryLoadsForMedia</key> <!-- IOS_GENERATED -->
+        <true/> <!-- IOS_GENERATED -->
+        <key>NSAllowsArbitraryLoadsInWebContent</key> <!-- IOS_GENERATED -->
+        <true/> <!-- IOS_GENERATED -->
+        </dict> <!-- IOS_GENERATED -->
+        </config-file> <!-- IOS_GENERATED -->
+
+        <config-file target="*-Info.plist" parent="LSApplicationQueriesSchemes"> <!-- IOS_GENERATED -->
+        <array> <!-- IOS_GENERATED -->
+        <string>fb</string> <!-- IOS_GENERATED -->
+        <string>instagram</string> <!-- IOS_GENERATED -->
+        <string>tumblr</string> <!-- IOS_GENERATED -->
+        <string>twitter</string> <!-- IOS_GENERATED -->
+        </array> <!-- IOS_GENERATED -->
+        </config-file> <!-- IOS_GENERATED -->
+
+        <config-file target="*-Info.plist" parent="SKAdNetworkItems"> <!-- IOS_GENERATED -->
+            <array> <!-- IOS_GENERATED -->
+                <!-- AdMob --><!-- IOS_GENERATED -->
+                <dict><!-- IOS_GENERATED -->
+                  <key>SKAdNetworkIdentifier</key><!-- IOS_GENERATED -->
+                  <string>cstr6suwn9.skadnetwork</string><!-- IOS_GENERATED -->
+                </dict><!-- IOS_GENERATED -->
+                <!-- Unity --><!-- IOS_GENERATED -->
+                <dict><!-- IOS_GENERATED -->
+                  <key>SKAdNetworkIdentifier</key><!-- IOS_GENERATED -->
+                  <string>4DZT52R2T5.skadnetwork</string><!-- IOS_GENERATED -->
+                </dict><!-- IOS_GENERATED -->
+                <dict><!-- IOS_GENERATED -->
+                  <key>SKAdNetworkIdentifier</key><!-- IOS_GENERATED -->
+                  <string>bvpn9ufa9b.skadnetwork</string><!-- IOS_GENERATED -->
+                </dict><!-- IOS_GENERATED -->
+                <!-- IronSource --><!-- IOS_GENERATED -->
+                <dict>       <!-- IOS_GENERATED -->
+                  <key>SKAdNetworkIdentifier</key>     <!-- IOS_GENERATED -->
+                  <string>SU67R6K2V3.skadnetwork</string> <!-- IOS_GENERATED -->
+                </dict><!-- IOS_GENERATED -->
+                <!-- Pangle --><!-- IOS_GENERATED -->
+                <dict><!-- IOS_GENERATED -->
+                  <key>SKAdNetworkIdentifier</key><!-- IOS_GENERATED -->
+                  <string>238da6jt44.skadnetwork</string><!-- IOS_GENERATED -->
+                </dict><!-- IOS_GENERATED -->
+                <dict><!-- IOS_GENERATED -->
+                  <key>SKAdNetworkIdentifier</key><!-- IOS_GENERATED -->
+                  <string>22mmun2rn5.skadnetwork</string><!-- IOS_GENERATED -->
+                </dict><!-- IOS_GENERATED -->
+                <!-- AppLovin --><!-- IOS_GENERATED -->
+                <dict><!-- IOS_GENERATED -->
+                  <key>SKAdNetworkIdentifier</key><!-- IOS_GENERATED -->
+                  <string>ludvb6z3bs.skadnetwork</string><!-- IOS_GENERATED -->
+                </dict><!-- IOS_GENERATED -->
+                <!-- Criteo --><!-- IOS_GENERATED -->
+                <dict><!-- IOS_GENERATED -->
+                  <key>SKAdNetworkIdentifier</key><!-- IOS_GENERATED -->
+                  <string>hs6bdukanm.skadnetwork</string><!-- IOS_GENERATED -->
+                </dict><!-- IOS_GENERATED -->
+                <!--AdColony--><!-- IOS_GENERATED -->
+                <dict><!-- IOS_GENERATED -->
+                  <key>SKAdNetworkIdentifier</key><!-- IOS_GENERATED -->
+                  <string>4PFYVQ9L8R.skadnetwork</string><!-- IOS_GENERATED -->
+                </dict><!-- IOS_GENERATED -->
+                <!-- AdColony`s dependent networks --><!-- IOS_GENERATED -->
+                <dict><!-- IOS_GENERATED -->
+                  <key>SKAdNetworkIdentifier</key><!-- IOS_GENERATED -->
+                  <string>4FZDC2EVR5.skadnetwork</string><!-- IOS_GENERATED -->
+                </dict><!-- IOS_GENERATED -->
+                <dict><!-- IOS_GENERATED -->
+                  <key>SKAdNetworkIdentifier</key><!-- IOS_GENERATED -->
+                  <string>V72QYCH5UU.skadnetwork</string><!-- IOS_GENERATED -->
+                </dict><!-- IOS_GENERATED -->
+                <dict><!-- IOS_GENERATED -->
+                  <key>SKAdNetworkIdentifier</key><!-- IOS_GENERATED -->
+                  <string>mlmmfzh3r3.skadnetwork</string><!-- IOS_GENERATED -->
+                </dict><!-- IOS_GENERATED -->
+                <dict><!-- IOS_GENERATED -->
+                  <key>SKAdNetworkIdentifier</key><!-- IOS_GENERATED -->
+                  <string>c6k4g5qg8m.skadnetwork</string><!-- IOS_GENERATED -->
+                </dict><!-- IOS_GENERATED -->
+                <dict><!-- IOS_GENERATED -->
+                  <key>SKAdNetworkIdentifier</key><!-- IOS_GENERATED -->
+                  <string>prcb7njmu6.skadnetwork</string><!-- IOS_GENERATED -->
+                </dict><!-- IOS_GENERATED -->
+                <dict><!-- IOS_GENERATED -->
+                  <key>SKAdNetworkIdentifier</key><!-- IOS_GENERATED -->
+                  <string>M8DBW4SV7C.skadnetwork</string><!-- IOS_GENERATED -->
+                </dict><!-- IOS_GENERATED -->
+                <dict><!-- IOS_GENERATED -->
+                  <key>SKAdNetworkIdentifier</key><!-- IOS_GENERATED -->
+                  <string>YCLNXRL5PM.skadnetwork</string><!-- IOS_GENERATED -->
+                </dict><!-- IOS_GENERATED -->
+                <dict><!-- IOS_GENERATED -->
+                  <key>SKAdNetworkIdentifier</key><!-- IOS_GENERATED -->
+                  <string>4468km3ulz.skadnetwork</string><!-- IOS_GENERATED -->
+                </dict><!-- IOS_GENERATED -->
+                <dict><!-- IOS_GENERATED -->
+                  <key>SKAdNetworkIdentifier</key><!-- IOS_GENERATED -->
+                  <string>t38b2kh725.skadnetwork</string><!-- IOS_GENERATED -->
+                </dict><!-- IOS_GENERATED -->
+                <dict><!-- IOS_GENERATED -->
+                  <key>SKAdNetworkIdentifier</key><!-- IOS_GENERATED -->
+                  <string>7UG5ZH24HU.skadnetwork</string><!-- IOS_GENERATED -->
+                </dict><!-- IOS_GENERATED -->
+                <dict><!-- IOS_GENERATED -->
+                  <key>SKAdNetworkIdentifier</key><!-- IOS_GENERATED -->
+                  <string>9RD848Q2BZ.skadnetwork</string><!-- IOS_GENERATED -->
+                </dict><!-- IOS_GENERATED -->
+                <dict><!-- IOS_GENERATED -->
+                  <key>SKAdNetworkIdentifier</key><!-- IOS_GENERATED -->
+                  <string>7rz58n8ntl.skadnetwork</string><!-- IOS_GENERATED -->
+                </dict><!-- IOS_GENERATED -->
+                <dict><!-- IOS_GENERATED -->
+                  <key>SKAdNetworkIdentifier</key><!-- IOS_GENERATED -->
+                  <string>ejvt5qm6ak.skadnetwork</string><!-- IOS_GENERATED -->
+                </dict><!-- IOS_GENERATED -->
+                <dict><!-- IOS_GENERATED -->
+                  <key>SKAdNetworkIdentifier</key><!-- IOS_GENERATED -->
+                  <string>9T245VHMPL.skadnetwork</string><!-- IOS_GENERATED -->
+                </dict><!-- IOS_GENERATED -->
+                <dict><!-- IOS_GENERATED -->
+                  <key>SKAdNetworkIdentifier</key><!-- IOS_GENERATED -->
+                  <string>TL55SBB4FM.skadnetwork</string><!-- IOS_GENERATED -->
+                </dict><!-- IOS_GENERATED -->
+                <dict><!-- IOS_GENERATED -->
+                  <key>SKAdNetworkIdentifier</key><!-- IOS_GENERATED -->
+                  <string>2U9PT9HC89.skadnetwork</string><!-- IOS_GENERATED -->
+                </dict><!-- IOS_GENERATED -->
+                <dict><!-- IOS_GENERATED -->
+                  <key>SKAdNetworkIdentifier</key><!-- IOS_GENERATED -->
+                  <string>8s468mfl3y.skadnetwork</string><!-- IOS_GENERATED -->
+                </dict><!-- IOS_GENERATED -->
+                <dict><!-- IOS_GENERATED -->
+                  <key>SKAdNetworkIdentifier</key><!-- IOS_GENERATED -->
+                  <string>KLF5C3L5U5.skadnetwork</string><!-- IOS_GENERATED -->
+                </dict><!-- IOS_GENERATED -->
+                <dict><!-- IOS_GENERATED -->
+                  <key>SKAdNetworkIdentifier</key><!-- IOS_GENERATED -->
+                  <string>ppxm28t8ap.skadnetwork</string><!-- IOS_GENERATED -->
+                </dict><!-- IOS_GENERATED -->
+                <dict><!-- IOS_GENERATED -->
+                  <key>SKAdNetworkIdentifier</key><!-- IOS_GENERATED -->
+                  <string>mtkv5xtk9e.skadnetwork</string><!-- IOS_GENERATED -->
+                </dict><!-- IOS_GENERATED -->
+                <dict><!-- IOS_GENERATED -->
+                  <key>SKAdNetworkIdentifier</key><!-- IOS_GENERATED -->
+                  <string>3RD42EKR43.skadnetwork</string><!-- IOS_GENERATED -->
+                </dict><!-- IOS_GENERATED -->
+            </array> <!-- IOS_GENERATED -->
+        </config-file> <!-- IOS_GENERATED -->
+
+        <framework src="libz.tbd" /> <!-- IOS_GENERATED -->
+        <framework src="SafariServices.framework" /> <!-- IOS_GENERATED -->
+        <framework src="QuartzCore.framework" /> <!-- IOS_GENERATED -->
+        <framework src="CoreGraphics.framework" /> <!-- IOS_GENERATED -->
+        <framework src="libresolv.9.tbd" /> <!-- IOS_GENERATED -->
+        <framework src="WatchConnectivity.framework" weak="true" /> <!-- IOS_GENERATED -->
+        <framework src="MediaPlayer.framework" /> <!-- IOS_GENERATED -->
+        <framework src="UIKit.framework" /> <!-- IOS_GENERATED -->
+        <framework src="MessageUI.framework" /> <!-- IOS_GENERATED -->
+        <framework src="CoreVideo.framework" /> <!-- IOS_GENERATED -->
+        <framework src="libsqlite3.tbd" /> <!-- IOS_GENERATED -->
+        <framework src="AVFoundation.framework" /> <!-- IOS_GENERATED -->
+        <framework src="libxml2.tbd" /> <!-- IOS_GENERATED -->
+        <framework src="Accelerate.framework" /> <!-- IOS_GENERATED -->
+        <framework src="Security.framework" /> <!-- IOS_GENERATED -->
+        <framework src="MobileCoreServices.framework" /> <!-- IOS_GENERATED -->
+        <framework src="libbz2.tbd" /> <!-- IOS_GENERATED -->
+        <framework src="CoreMedia.framework" /> <!-- IOS_GENERATED -->
+        <framework src="WebKit.framework" /> <!-- IOS_GENERATED -->
+        <framework src="SystemConfiguration.framework" /> <!-- IOS_GENERATED -->
+        <framework src="CoreTelephony.framework" /> <!-- IOS_GENERATED -->
+        <framework src="Social.framework" weak="true" /> <!-- IOS_GENERATED -->
+        <framework src="libc++.tbd" /> <!-- IOS_GENERATED -->
+        <framework src="CoreImage.framework" /> <!-- IOS_GENERATED -->
+        <framework src="OpenGLES.framework" /> <!-- IOS_GENERATED -->
+        <framework src="AudioToolbox.framework" /> <!-- IOS_GENERATED -->
+        <framework src="Foundation.framework" /> <!-- IOS_GENERATED -->
+        <framework src="AdSupport.framework" /> <!-- IOS_GENERATED -->
+        <framework src="EventKit.framework" /> <!-- IOS_GENERATED -->
+        <framework src="CoreFoundation.framework" weak="true" /> <!-- IOS_GENERATED -->
+        <framework src="CoreMotion.framework" /> <!-- IOS_GENERATED -->
+        <framework src="AVKit.framework" /> <!-- IOS_GENERATED -->
+        <framework src="CoreLocation.framework" /> <!-- IOS_GENERATED -->
+        <framework src="CFNetwork.framework" /> <!-- IOS_GENERATED -->
+        <framework src="JavaScriptCore.framework" /> <!-- IOS_GENERATED -->
+        <framework src="CoreData.framework" /> <!-- IOS_GENERATED -->
+        <framework src="GLKit.framework" /> <!-- IOS_GENERATED -->
+        <framework src="EventKitUI.framework" /> <!-- IOS_GENERATED -->
+        <header-file src="src/ios/AdCelSDKPlugin.h" /> <!-- IOS_GENERATED -->
+        <source-file src="src/ios/AdCelSDKPlugin.mm" /> <!-- IOS_GENERATED -->
+        <header-file src="src/ios/AdCelPlugin.h" /> <!-- IOS_GENERATED -->
+        <source-file src="src/ios/libAdCelLinker.a" framework="true" /> <!-- IOS_GENERATED -->
+        <source-file src="src/ios/AdCelPlugin.m" /> <!-- IOS_GENERATED -->
+        <framework src="src/ios/AdCel.xcframework" custom="true" embed="true" /> <!-- IOS_GENERATED -->
+        <header-file src="src/ios/AdCelSDKPluginDefs.h" /> <!-- IOS_GENERATED -->
+</platform>
+</plugin>
